@@ -129,6 +129,12 @@ public class TemperatureDao {
 		LOGGER.info("Inside the get tempreture by using citcountryy name ||  getTemperatureByCityName() ");
 		CityTemperatureResponse cityTemperatureResponse = new CityTemperatureResponse();
 		/**
+		 * Check countrName Parameter
+		 */
+		if (countryName == null || countryName.isEmpty()) {
+			throw new CityWeatherException(CityWeatherErrorEnum.CW_ERROR_INVALID_INPUT_COUNTRY_ENDPOINT);
+		}
+		/**
 		 * get the capital city using country name
 		 */
 		String capitalCity = CommonUtility.getCapitalCity(countryName);
